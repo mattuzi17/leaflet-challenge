@@ -1,6 +1,6 @@
   
 // API endpoint inside queryUrl
-var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
 
 //  GET request to the query URL
 d3.json(queryUrl, function(data) {
@@ -26,19 +26,19 @@ function createFeatures(earthquakeData) {
 	// Define function to set the circle color based on the magnitude
 function c_color(magnitude) {
 	if (magnitude <= 1) {
-		return "#f5e640"
+		return "#5bff9d"
 	}
 	else if (magnitude <= 2) {
-		return "#f5c440"
+		return "#74ff5b"
 	}
 	else if (magnitude <= 3) {
-		return "#ff9326"
+		return "#d8ff5b"
 	}
 	else if (magnitude <= 4) {
-		return "#ff7626"
+		return "#ff9a5b"
 	}
 	else if (magnitude <= 5) {
-		return "#f04d24" 
+		return "#ff5b5b" 
 	}
 	else {
 		return "#d62020"
