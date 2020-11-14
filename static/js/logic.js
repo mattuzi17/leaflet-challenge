@@ -1,5 +1,5 @@
   
-// API endpoint inside queryUrl
+// API endpoint 
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
 
 //  GET request to the query URL
@@ -20,7 +20,7 @@ function createFeatures(earthquakeData) {
 
 	// Define function to create the circle radius based on the magnitude
 	function radiusSize(magnitude) {
-		return magnitude * 20000;
+		return magnitude * 15000;
 	}
 
 	// Define function to set the circle color based on the magnitude
@@ -133,7 +133,7 @@ function createMap(earthquakes) {
 		var div = L.DomUtil.create("div", "info legend");
 		
 		var grades = [0, 1, 2, 3, 4, 5];
-		var colors = ["#f5e640", "#f5c440", "#ff9326", "#ff7626", "#f04d24", "#d62020"];
+		var colors = ["#5bff9d", "#74ff5b", "#d8ff5b6", "#ff9a5b", "#ff5b5b", "#d62020"];
 	
 		// loop through our density intervals and generate a label with a colored square for each interval
 		for (var i = 0; i < grades.length; i++) {
