@@ -63,7 +63,7 @@ function c_color(magnitude) {
 
 function createMap(earthquakes) {
 
-	// Define streetmap, satellite, and dark layers
+	// Define layers
 	var streetmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
 		attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
 		maxZoom: 18,
@@ -71,12 +71,6 @@ function createMap(earthquakes) {
 		accessToken: API_KEY
 	});
 	
-	var highContrastMap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-		maxZoom: 18,
-		id: 'mapbox.high-contrast',
-		accessToken: API_KEY
-	});
 
 	var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
 		attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
@@ -95,7 +89,6 @@ function createMap(earthquakes) {
 	
 	//  base layers
 	var baseMaps = {
-		"High Contrast": highContrastMap,
 		"Street Map": streetmap,
 		"Dark Map": dark,
 		"Satellite Map": satellite
@@ -110,7 +103,7 @@ function createMap(earthquakes) {
 	var myMap = L.map("mapid", {
 		center: [38.69,-121.33],
 		zoom: 3.5,
-		layers: [streetmap, earthquakes,]
+		layers: [dark, earthquakes,]
 	});
 	
 
