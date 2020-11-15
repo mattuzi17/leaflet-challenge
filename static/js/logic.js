@@ -11,19 +11,17 @@ d3.json(queryUrl, function(data) {
 
 function createFeatures(earthquakeData) {
 
-	// Define a function we want to run once for each feature in the features array
-	// Give each feature a popup describing the place and time of the earthquake
 	function onEachFeature(feature, layer) {
 		layer.bindPopup("<h3>" + feature.properties.place +
 			"</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
 	}
 
-	// Define function to create the circle radius based on the magnitude
+	// function to create the circle radius based on the magnitude
 	function radiusSize(magnitude) {
 		return magnitude * 15000;
 	}
 
-	// Define function to set the circle color based on the magnitude
+	// function to set the circle color based on the magnitude
 function c_color(magnitude) {
 	if (magnitude <= 1) {
 		return "#5bff9d"
@@ -95,7 +93,7 @@ function createMap(earthquakes) {
 	});
 	
 	
-	// Define a baseMaps object to hold our base layers
+	//  base layers
 	var baseMaps = {
 		"High Contrast": highContrastMap,
 		"Street Map": streetmap,
@@ -103,13 +101,12 @@ function createMap(earthquakes) {
 		"Satellite Map": satellite
 	};
 
-	// Create overlay object to hold our overlay layer
+	// overlay layer
 	var overlayMaps = {
 		Earthquake: earthquakes,
 	};
 	
-
-	// Create our map, giving it the streetmap and earthquakes layers to display on load
+	// map with layers
 	var myMap = L.map("mapid", {
 		center: [38.69,-121.33],
 		zoom: 3.5,
@@ -117,7 +114,7 @@ function createMap(earthquakes) {
 	});
 	
 
-	// Create a layer control
+	// layer control
 	// Pass in our baseMaps and overlayMaps
 	// Add the layer control to the map
 	L.control.layers(baseMaps, overlayMaps, {
@@ -125,7 +122,7 @@ function createMap(earthquakes) {
 	}).addTo(myMap);
 
 
-	// Add legend to the map
+	// legend
 	var legend = L.control({position: "bottomright"});
 	
 	legend.onAdd = function (myMap) {
